@@ -4,4 +4,5 @@ export class CreateUserDto { //модель типизации сущности
     email: string;
     name: string;
     order_id: number;
+    favorite_id: number
 }
