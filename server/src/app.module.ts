@@ -7,9 +7,10 @@ import { OrdersModule } from './orders/orders.module';
 import { FavoriteModule } from './favorite/favorite.module';
 import { QuestsModule } from './quests/quests.module';
 import { ConfigModule } from '@nestjs/config';
+import { PrismaModule } from './prisma/prisma.module';
 
 @Module({
-  imports: [UserModule, AuthModule, OrdersModule, FavoriteModule, QuestsModule, ConfigModule.forRoot({isGlobal: true,})],
+  imports: [UserModule, AuthModule, OrdersModule, FavoriteModule, QuestsModule, ConfigModule.forRoot({isGlobal: true,}), PrismaModule],
   controllers: [AppController],
   providers: [AppService],
 })
