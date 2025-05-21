@@ -117,7 +117,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/Users/zhannaskaraieva/Desktop/HomeWork/project/server/generated/mongo",
+      "value": "/Users/zhannaskaraieva/Desktop/HomeWork/project/server/src/prisma/generated/mongo",
       "fromEnvVar": null
     },
     "config": {
@@ -135,10 +135,10 @@ const config = {
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": "../../.env",
-    "schemaEnvPath": "../../.env"
+    "rootEnvPath": "../../../../.env",
+    "schemaEnvPath": "../../../../.env"
   },
-  "relativePath": "../../prisma/mongo",
+  "relativePath": "../../../../prisma/mongo",
   "clientVersion": "6.8.2",
   "engineVersion": "2060c79ba17c6bb9f5823312b6f6b7f4a845738e",
   "datasourceNames": [
@@ -154,8 +154,8 @@ const config = {
       }
     }
   },
-  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../../generated/mongo\"\n}\n\ndatasource db {\n  provider = \"mongodb\"\n  url      = env(\"MONGO_URL\")\n}\n\nmodel Quest {\n  id    String @id @default(auto()) @map(\"_id\") @db.ObjectId\n  title String\n  desc  String\n}\n",
-  "inlineSchemaHash": "e1069998a100af40e198be26f4dc9d71415cce678b5af411fa446a6fcee6af67",
+  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../../src/prisma/generated/mongo\"\n}\n\ndatasource db {\n  provider = \"mongodb\"\n  url      = env(\"MONGO_URL\")\n}\n\nmodel Quest {\n  id    String @id @default(auto()) @map(\"_id\") @db.ObjectId\n  title String\n  desc  String\n}\n",
+  "inlineSchemaHash": "0020ad6f57e5cd83df5bd6b172ea3096aa3fff6c82cce9c8cabb7ebac792e83c",
   "copyEngine": true
 }
 
@@ -164,8 +164,8 @@ const fs = require('fs')
 config.dirname = __dirname
 if (!fs.existsSync(path.join(__dirname, 'schema.prisma'))) {
   const alternativePaths = [
-    "generated/mongo",
-    "mongo",
+    "src/prisma/generated/mongo",
+    "prisma/generated/mongo",
   ]
   
   const alternativePath = alternativePaths.find((altPath) => {
@@ -195,7 +195,7 @@ Object.assign(exports, Prisma)
 
 // file annotations for bundling tools to include these files
 path.join(__dirname, "libquery_engine-darwin-arm64.dylib.node");
-path.join(process.cwd(), "generated/mongo/libquery_engine-darwin-arm64.dylib.node")
+path.join(process.cwd(), "src/prisma/generated/mongo/libquery_engine-darwin-arm64.dylib.node")
 // file annotations for bundling tools to include these files
 path.join(__dirname, "schema.prisma");
-path.join(process.cwd(), "generated/mongo/schema.prisma")
+path.join(process.cwd(), "src/prisma/generated/mongo/schema.prisma")

@@ -4,7 +4,7 @@ import {
     OnModuleDestroy,
     Logger,
   } from '@nestjs/common';
-  import { PrismaClient as MongoPrismaClient } from '@prisma/mongo/client';
+  import { PrismaClient as MongoPrismaClient } from '../generated/mongo-client';
   
   
   

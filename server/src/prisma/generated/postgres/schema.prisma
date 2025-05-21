@@ -6,20 +6,20 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../generated/prisma"
+  output   = "../../src/prisma/generated/postgres"
 }
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url      = env("POSTGRES_DATABASE_URL")
 }
 
 model User {
   id       Int        @id @default(autoincrement())
   email    String     @unique
-  name     String
-  orders   Orders[]
-  favorite Favorite[]
+  password String
+  orders   Orders[] //указываем что у одного юсера может быть много заказов
+  favorite Favorite[] //аналогично чтого избранного
 }
 
 model Orders {
