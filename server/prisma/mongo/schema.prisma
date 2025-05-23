@@ -1,6 +1,6 @@
 generator client {
   provider = "prisma-client-js"
-  output   = "../../src/prisma/generated/mongo"
+  output   = "../../node_modules/@prisma/mongo-client"
 }
 
 datasource db {

@@ -51,8 +51,9 @@ DTO (Data Transfer Object)	Определяет форму входных/вых
 
 10. инициализация 
 npm install -D prisma  - запуск команд и взаимодействие с проектом.
-npx prisma init
-Создание новый prisma каталог с schema.prisma файлом. Это основной файл конфигурации, содержащий схему вашей базы данных. 
+npx prisma init - эту команду использую для создания файла в случае с одной БД
+Иначе создаю руками структуру.
+
 Создание.env файла. - если его нету
 
 11. Установка переменного окружения
@@ -61,9 +62,23 @@ DATABASE_URL="postgresql://postgres:password@localhost:5432/nestdb?schema=public
 
 12. Моделирование данных в prisma/prisma.schema
 
+npx prisma generate --schema=prisma/postgres/schema.prisma
+npx prisma generate --schema=prisma/mongo/schema.prisma
+
+генерации клиента: перед тем как сгенерировать клиента нужно прописать в схеме путь output к папке , где будет создана служба Prisma 
+или еще называют Database
+
 13. Использую Prisma Migrate для создания таблиц в базе данных.
 Чтобы сопоставить модель данных со схемой базы данных, необходимо использовать prisma migrate
-npx prisma migrate dev --name init
+(npx prisma migrate dev --name init)
+
+Запуск миграций для postgres
+npx prisma migrate dev --schema=prisma/postgres/schema.prisma
+
+(если нужно переписать базу новую)- npx prisma migrate reset --schema=prisma/postgres/schema.prisma
+
+Синхронизация схемы Prisma для mongo
+npx prisma db push --schema=prisma/mongo/schema.prisma
 
 Эта команда выполняет две функции:
 
@@ -71,17 +86,36 @@ npx prisma migrate dev --name init
 Запускает файл миграции SQL в базе данных.
 
 Команда сохранит копию базы и фаил миграции в папке prisma/migrations
-Prisma сгенерирует Prisma Client на основе вашей последней схемы.
 
 Запуск просмотра БД 
-npx prisma studio
+npx prisma studio --schema=prisma/postgres/schema.prisma
+
+CRUD операции с Prisma Client
+
+14. Создание службы Prisma. 
+Создание модуля базы данных или Интегрируем Prisma в приложение для єтого внутри src каталога создайте новый файл с именем prisma.service.ts.
+
+Prisma Client — это автоматически сгенерированный и типобезопасный конструктор запросов, который настраивается под ваши данные. 
+Установка Prisma Client в проект с помощью команды:
+
+npm install @prisma/client
+
+Когда вносятся изменения в базу данных, которые отражаются в схеме Prisma, необходимо вручную повторно сгенерировать Prisma Client, чтобы обновить сгенерированный код 
+
+npx nest g service prisma/postgres-prisma --no-spec
+npx nest g service prisma/mongo-prisma --no-spec
+
+15. 
+
+16. 
+
+Регистрация пользователя.
+
+17. Валидация 
+npm i --save class-validator class-transformer
+
+в документе create-user.dto.ts каждому свойству обекта User присваиваем декоратор валидатора 
+https://github.com/typestack/class-validator?tab=readme-ov-file#table-of-contents
 
 
-14. Создание службы Prisma. Это абстрагирование API Prisma Client от приложения для дальнейшего переиспользования.
-Эта служба, называемая PrismaService, будет отвечать за создание PrismaClient экземпляра и подключение к вашей базе данных.
-npx nest generate module prisma
-npx nest generate service prisma
 
-15. Import модуль PrismaService в app.modelu.ts
-
-14. Добавление PrismaClientв Users модуль

@@ -1,10 +1,24 @@
+// import { Injectable, OnModuleInit, OnModuleDestroy } from '@nestjs/common';
+// import { PrismaClient as PostgresPrismaClient } from '../prisma/generated/postgres';
+// import { PrismaClient as MongoPrismaClient } from '../prisma/generated/mongo';
 
-import { Injectable, OnModuleInit} from '@nestjs/common';
-import { PrismaClient }  from 'generated/prisma'; //изменила в соответствии с путями в schema (generator client {provider = "prisma-client-js"output   = "../generated/prisma"})
+// @Injectable()
+// export class PrismaService implements OnModuleInit, OnModuleDestroy {
+//   public postgres: PostgresPrismaClient;
+//   public mongo: MongoPrismaClient;
 
-@Injectable()
-export class PrismaService extends PrismaClient implements OnModuleInit {
-    async onModuleInit() {
-        await this.$connect();
-    }
-}
+//   constructor() {
+//     this.postgres = new PostgresPrismaClient();
+//     this.mongo = new MongoPrismaClient();
+//   }
+
+//   async onModuleInit() {
+//     await this.postgres.$connect();
+//     await this.mongo.$connect();
+//   }
+
+//   async onModuleDestroy() {
+//     await this.postgres.$disconnect();
+//     await this.mongo.$disconnect();
+//   }
+// }

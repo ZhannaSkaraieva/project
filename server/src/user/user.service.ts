@@ -1,15 +1,21 @@
 import { Injectable } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { PrismaService } from '../prisma/prisma.service';
+import { PostgresPrismaService } from '../prisma/postgres-prisma/postgres-prisma.service';
 
 @Injectable()
 
 export class UserService {
-  constructor(private prisma: PrismaService) { } 
+  constructor(private prisma: PostgresPrismaService) { } 
   
-  create() {createUserDto; CreateUserDto};
-  
+  async create(createUserDto: CreateUserDto) {
+    return this.prisma.user.create({
+      data: {
+        email: createUserDto.email,
+        password: createUserDto.password,
+      },
+    });
+  }
 
   findAll() {
     return `This action returns all user`;
