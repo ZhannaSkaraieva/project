@@ -1,5 +1,5 @@
 
-import { IsEmail, IsString, MinLength, IsInt } from "class-validator"; //валидация данных
+import { IsEmail, IsString, MinLength, IsInt, IsArray, ArrayNotEmpty, IsIn } from "class-validator"; //валидация данных
 
 //Импортируем декораторы для валидации данных из библиотеки class-validator
 
@@ -19,12 +19,17 @@ export class CreateUserDto { //модель типизации сущности
     //@MinLength(min: number) Проверяет, не меньше ли длина строки заданного числа.
     password: string;
 
-    @IsString()
-    name: string;
+    @IsArray()
+    @ArrayNotEmpty()
+    @IsIn(['admin', 'user'], { each: true })
+    roles: string[];
 
-    @IsString()
-    order_id: string;
+//     @IsString() //Checks if the value is a string.
+//     name: string;
 
-    @IsString()
-    favorite_id: string
-}
+//     @IsString()
+//     order_id: string;
+
+//     @IsString()
+//     favorite_id: string
+ }

@@ -19,7 +19,13 @@ model User {
   email        String  @unique
   password     String
   orders       Orders[] //указываем что у одного юсера может быть много заказов
-  favorite     Favorite[] //аналогично чтого избранного
+  favorite     Favorite[]
+  role         Role []   
+}
+
+enum Role {
+  USER
+  ADMIN
 }
 
 model Orders {
