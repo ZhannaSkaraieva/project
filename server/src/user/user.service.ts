@@ -5,6 +5,7 @@ import * as bcrypt from 'bcrypt';
 
 
 
+
 @Injectable()
 
 export class UserService { //injected using the constructor (внедрено с помощью конструктора)
@@ -30,7 +31,15 @@ export class UserService { //injected using the constructor (внедрено с
     return {newUser}
   }
 
-  
+  async findOne(email: string) { //создаю функцию для
+    return await this.prisma.user.findUnique({ //жду ответа от базы данных
+      //в базе данных ищу юзера по уникальному имэилу
+      //если есть такой юзер то возвращаю его
+      where: {
+         email: email,
+      }
+    });
+  }
 
   // findAll() {
   //   return `This action returns all user`;

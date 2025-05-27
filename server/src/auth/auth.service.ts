@@ -1,26 +1,27 @@
 import { Injectable } from '@nestjs/common';
-import { CreateAuthDto } from './dto/create-auth.dto';
-import { UpdateAuthDto } from './dto/update-auth.dto';
+import { UserService } from '../user/user.service'; // Импортируем UsersService
+import * as bcrypt from 'bcrypt';
+
+
 
 @Injectable()
 export class AuthService {
-  create(createAuthDto: CreateAuthDto) {
-    return 'This action adds a new auth';
+    //подключаю или инициализирую сервисы, которые будут использоваться в AuthService
+  constructor(private userService: UserService) { }//теперь это доступ к сервису UserService
+
+  async validateUser(email: string, password: string): Promise<any> { // Функция для валидации пользователя в которую передаю почту и пароль
+
+      const user = await this.userService.findOne(email); // Ищем пользователя по email и 
+      // если он есть, то проверяем пароль
+      if (!user) {
+        throw new Error('User not found'); // Если пользователь не найден, выбрасываем ошибку
+      }
+    const isMatch = await bcrypt.compare(password, user.password); // Сохраняем пароль в переменную
+    // Сравниваем введенный пароль с хешированным паролем из базы данных
+      if (user && isMatch) { //если пользователь найден и пароль совпадает 
+        return user;
+      }
+      throw new Error('Invalid password or user'); // если нет, то выбрасываем ошибку
+    }
   }
 
-  findAll() {
-    return `This action returns all auth`;
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} auth`;
-  }
-
-  update(id: number, updateAuthDto: UpdateAuthDto) {
-    return `This action updates a #${id} auth`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} auth`;
-  }
-}

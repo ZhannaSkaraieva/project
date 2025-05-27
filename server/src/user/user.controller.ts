@@ -13,7 +13,8 @@ export class UserController {
     //@Body() — декоратор, который говорит NestJS:
     //"возьми тело запроса (JSON) и засунь его в переменную createUserDto".
     //createUserDto: CreateUserDto — это тип (DTO = Data Transfer Object), который описывает форму ожидаемых данных, например:
-    //пример для запроса : {"email": "test@example.com", "password": "123456}
+    //пример для запроса : {"id":1,"email": "test@example.com", "password": "123456","roles": ["user"]}
+   
     //привязываю ValidationPipe к @Body()декоратору обработчика маршрута, чтобы наш канал вызывался для проверки тела поста.
     return this.userService.create(createUserDto);
     //Вызов метода create у сервиса UserService, и передача в него полученных данных. Эти данные передаем с помощью Postman

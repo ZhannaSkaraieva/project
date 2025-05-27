@@ -9,5 +9,6 @@ import { PostgresPrismaService } from '../prisma/postgres-prisma/postgres-prisma
   imports : [PostgresPrismaClient], // Импортируем PrismaClient
   controllers: [UserController],
   providers: [UserService, PostgresPrismaService], // Добавляем PrismaService в провайдеры
+  exports:[UserService],// для дальнейшего использоваия в AUTH
 })
 export class UserModule {}

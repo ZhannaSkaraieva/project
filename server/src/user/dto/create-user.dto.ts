@@ -6,9 +6,9 @@ import { IsEmail, IsString, MinLength, IsInt, IsArray, ArrayNotEmpty, IsIn } fro
 export class CreateUserDto { //модель типизации сущности 
     //схема DTO (Data Transfer Object). DTO — это объект, который определяет, как данные должны дальше отправляться по сети.
 
-    @IsInt()
-    //@IsInt() Проверяет, является ли значение целым числом.
-    id: number;
+    // @IsInt()
+    // //@IsInt() Проверяет, является ли значение целым числом.
+    // id: number;
 
     @IsEmail()
     //@IsEmail(options?: IsEmailOptions) Проверяет, является ли строка допустимым адресом электронной почты.
@@ -33,3 +33,6 @@ export class CreateUserDto { //модель типизации сущности
 //     @IsString()
 //     favorite_id: string
  }
+
+
+ 
