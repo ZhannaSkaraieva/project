@@ -1,3 +1,4 @@
+import { Role } from './../../../node_modules/@prisma/postgres-client/index'; //Импортируем тип Role из Prisma Client
 
 import { IsEmail, IsString, MinLength, IsInt, IsArray, ArrayNotEmpty, IsIn } from "class-validator"; //валидация данных
 
@@ -22,7 +23,7 @@ export class CreateUserDto { //модель типизации сущности
     @IsArray()
     @ArrayNotEmpty()
     @IsIn(['admin', 'user'], { each: true })
-    roles: string[];
+    roles: Role ;
 
 //     @IsString() //Checks if the value is a string.
 //     name: string;

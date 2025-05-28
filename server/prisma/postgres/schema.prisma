@@ -20,7 +20,7 @@ model User {
   password     String
   orders       Orders[] //указываем что у одного юсера может быть много заказов
   favorite     Favorite[]
-  role         Role []   
+  role         Role @default(USER)   
 }
 
 enum Role {

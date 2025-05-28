@@ -9,8 +9,10 @@ import { AuthGuard } from '@nestjs/passport';
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
-  @UseGuards(AuthGuard('local'))
-  @Post('login')
+  @UseGuards(AuthGuard('local')) // Используем AuthGuard для понимания можем ли мы войти в систему. он обращается в 
+  // LocalStrategy, которая проверяет пользователя по email и паролю затем возвращает его, 
+  // если все верно и в userService есть такой пользователь
+  @Post('login') // http://localhost:3000/api/auth/login
   async login(@Request() req) {
     return req.user;
   }

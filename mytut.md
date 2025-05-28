@@ -169,3 +169,18 @@ https://github.com/typestack/class-validator?tab=readme-ov-file#table-of-content
 
 26. Маршрут входа Login route
 При наличии стратегии мы теперь можем реализовать базовый /auth/login маршрут и применить встроенный Guard для инициирования потока «паспорт-локальный».
+{
+    "email": "test2@example.com", 
+    "password": "123456"
+    }
+
+    использовать возможный вариант записи для поиска юсера и  проверки по маршруту http://localhost:3000/api/auth/login 
+    предварительно записв его в базу в таком виде :
+
+  {
+  "email": "test2@example.com", 
+  "password": "123456",
+  "roles": ["user"]
+  } 
+
+27. 

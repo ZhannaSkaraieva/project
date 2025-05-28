@@ -10,10 +10,10 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
     super({ usernameField: 'email' }); // Используем email в качестве поля для аутентификации 
   }
 
-  async validate(email: string, password: string): Promise<any> {
+  async validate(email: string, password: string){
     const user = await this.authService.validateUser(email, password);
     if (!user) {
-      throw new UnauthorizedException();
+      throw new UnauthorizedException('Неправильные учетные данные'); // Если пользователь не найден, выбрасываем исключение
     }
     return user;
   }
