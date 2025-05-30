@@ -183,4 +183,34 @@ https://github.com/typestack/class-validator?tab=readme-ov-file#table-of-content
   "roles": ["user"]
   } 
 
-27. 
+27. Создание собственного класса GUARDS. для єтого в корневой папке создаю дополнительній фаил auth/local-auth.guard.ts и добавляю в него код из инструкции
+
+28. JWT functionality
+
+$ npm install --save @nestjs/jwt passport-jwt
+$ npm install --save-dev @types/passport-jwt
+
+Для правильной отработки запроса по пути POST /auth/login, я с помошью AuthGuard смогла осуществить следующие действия:
+     1 - если пользователь прошел проверку то Обработчик маршрута вызывается только в этом случае .
+     2 - Сам параметр req попадает user свойство (заполненное Passport во время процесса аутентификации по локальному паспорту)
+     3 - если все выполнилось , то генерируется  JWT и ввозвращается обратно  в этом маршруте.
+29. создаю секретную переменную в constants.ts
+
+30. обновление auth module
+
+31. делаем изменения в контроллере и только после этого можно уже проверить на пути http://localhost:3000/api/auth/login передать данные , которые предварительно записали в базу 
+{
+    "email": "test2@example.com", 
+    "password": "123456"
+    } 
+
+    и в ответ получим токен: {
+    "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3QyQGV4YW1wbGUuY29tIiwiaWQiOjMsImlhdCI6MTc0ODU1MDI3MywiZXhwIjoxNzQ4NTUwMzMzfQ.VsmSU59tVyZKfjlwTOc8R2N0DRCVNNFe3HukV8vIc38"
+}
+
+32. Реализация паспорта JWT
+создать файла с именем jwt.strategy.ts в auth с кодом из инструкции
+
+33. определяем JwtAuthGuardкласс, который расширяет встроенный AuthGuard:
+
+34. Реализуйте защищенный маршрут и стратегию JWT 

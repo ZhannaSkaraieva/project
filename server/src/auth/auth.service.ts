@@ -1,13 +1,18 @@
 import { Injectable, NotFoundException, UnauthorizedException } from '@nestjs/common';
 import { UserService } from '../user/user.service'; // Импортируем UsersService
 import * as bcrypt from 'bcrypt';
+import { JwtService } from '@nestjs/jwt';
 
 
 
 @Injectable()
 export class AuthService {
     //подключаю или инициализирую сервисы, которые будут использоваться в AuthService
-  constructor(private userService: UserService) { }//теперь это доступ к сервису UserService
+  constructor(
+    private userService: UserService,//теперь это доступ к сервису UserService
+
+    private jwtService: JwtService)// пункт 28
+  { }
 
   async validateUser(email: string, password: string){ // Функция для валидации пользователя в которую передаю почту и пароль
 
@@ -22,6 +27,13 @@ export class AuthService {
         return user;
       }
       throw new UnauthorizedException('Неправильный пароль'); // если нет, то выбрасываем ошибку
-    }
+  }
+  
+  async login(user: any) {
+    const payload = { email: user.email, id: user.id };
+    return {
+      access_token: this.jwtService.sign(payload),
+    };
+  }
   }
 
