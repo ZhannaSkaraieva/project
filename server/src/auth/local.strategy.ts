@@ -15,6 +15,7 @@ export class LocalStrategy extends PassportStrategy(Strategy) {// Использ
     // Если пользователь найден и пароль совпадает, возвращает пользователя
     // Если пользователь не найден или пароль не совпадает, выбрасывает исключение UnauthorizedException
     const user = await this.authService.validateUser(email, password);
+    
     if (!user) {
       throw new UnauthorizedException('Неправильные учетные данные'); // Если пользователь не найден, выбрасываем исключение
     }
