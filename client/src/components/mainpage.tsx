@@ -1,5 +1,8 @@
 import { Box, Typography } from '@mui/material'
+
 import React from 'react'
+import Questtabs from './questtabs';
+import QuestList from './questlist';
 
 const MainPage = () => {
   return (
@@ -7,7 +10,7 @@ const MainPage = () => {
       <Typography align='left'
         sx={{
           color: '#F2890F',
-          fontFamily: 'Raleway',
+          fontFamily: 'Raleway,sans-serif',
           fontSize: '14px',
           fontStyle: 'normal',
           fontWeight: 500,
@@ -18,14 +21,17 @@ const MainPage = () => {
       <Typography align='left'
         sx={{
           color: '#FFF',
-          fontFamily: 'Raleway',
+          fontFamily: 'Raleway,sans-serif',
           fontSize: '64px',
           fontStyle: 'normal',
-          fontweight: 800,
+          fontWeight: 800,
           lineHeight: '110 %' /* 70.4px */
         }}>
         Выберите тематику
       </Typography>
+      <Questtabs />
+      <QuestList/>
+    
     </Box>
     
   )
