@@ -1,8 +1,10 @@
 import { Box, Typography } from '@mui/material'
 
 import React from 'react'
-import Questtabs from './questtabs';
+
 import QuestList from './questlist';
+import BasicTabs from './basictabs';
+
 
 const MainPage = () => {
   return (
@@ -14,7 +16,9 @@ const MainPage = () => {
           fontSize: '14px',
           fontStyle: 'normal',
           fontWeight: 500,
-          lineHeight: '144%'
+          lineHeight: '144%',
+          ml: '137px',
+          mt: '48px',
           }}>
         квесты в Санкт-Петербурге
       </Typography>
@@ -25,13 +29,14 @@ const MainPage = () => {
           fontSize: '64px',
           fontStyle: 'normal',
           fontWeight: 800,
-          lineHeight: '110 %' /* 70.4px */
+          lineHeight: '110 %', /* 70.4px */
+          ml: '137px',
+          mt: '5px',
         }}>
         Выберите тематику
       </Typography>
-      <Questtabs />
+      <BasicTabs/>
       <QuestList/>
-    
     </Box>
     
   )

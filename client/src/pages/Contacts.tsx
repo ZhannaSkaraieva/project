@@ -1,6 +1,6 @@
 /**СТРАНИЦА С КОНТАКТАМИ */
 
-import { Container } from "@mui/material";
+import { Box, Container, Typography } from "@mui/material";
 import React from "react";
 import Header from "../components/header/header";
 
@@ -14,8 +14,42 @@ export const Contacts = () => {
             }}>
             <Header/>
         
-            <h1>Contacts Page</h1>
-            <p>This is the contacts page where you can manage your contacts.</p>
+            <Box>
+      <Typography align='left'
+        sx={{
+          color: '#F2890F',
+          fontFamily: 'Raleway,sans-serif',
+          fontSize: '14px',
+          fontStyle: 'normal',
+          fontWeight: 500,
+          lineHeight: '144%',
+          ml: '137px',
+          mt: '48px',
+          }}>
+        квесты в Санкт-Петербурге
+      </Typography>
+      <Typography align='left'
+        sx={{
+          color: '#FFF',
+          fontFamily: 'Raleway,sans-serif',
+          fontSize: '64px',
+          fontStyle: 'normal',
+          fontWeight: 800,
+          lineHeight: '110 %', /* 70.4px */
+          ml: '137px',
+          mt: '5px',
+        }}>
+        Контакты
+                </Typography>
+                <Box>
+                    <Typography align='left'
+                        sx={{
+                            color: '#FFF',
+                        }}>
+                    </Typography>
+                </Box>
+      
+    </Box>
        </Container>
     );
 }

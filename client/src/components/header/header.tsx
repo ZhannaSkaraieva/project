@@ -32,7 +32,7 @@ function Header() {
           width: '100%',
           height: '74px',
           alignItems: 'center',
-          padding: '0 33px',
+          
           justifyContent: 'space-between',
         }}>
         <Toolbar disableGutters
@@ -40,6 +40,7 @@ function Header() {
             width: '100%',
             display: 'flex',
             height: '100%',
+            padding: '0 33px',
             alignItems: 'center',
             justifyContent: 'space-between',
           }}>
@@ -149,9 +150,15 @@ function Header() {
 {/* Центр — горизонтальное меню */}
           <Box
             sx={{
+              width: 'auto',
+              maxWidth: '100%',
+              overflow: 'hidden',
+              boxSizing: 'border-box',
               flexGrow: 1,
               display: { xs: 'none', md: 'flex' },
-              gap: 3
+              gap: 6,
+              justifyContent: 'center',
+
             }}>
             {pages.map((page) => (
               <Button
@@ -160,7 +167,7 @@ function Header() {
                 to={page.path}
                 onClick={handleCloseNavMenu}
                 sx={{
-                  my: 5,
+                  mt: 5,
                   color: 'white',
                   display: 'block',
                   fontVariantNumeric: 'lining-nums proportional-nums',/* text/navigation - header */
@@ -170,6 +177,8 @@ function Header() {
                   fontWeight: 600,
                   lineHeight: 'normal',
                   letterSpacing: '0.42px',
+                  alignItems: 'center',
+                  justifyContent: 'center',
                 }}>
                 {page.label}
               </Button>
@@ -190,7 +199,8 @@ function Header() {
                 fontStyle: 'normal',
                 fontWeight: 600,
                 lineHeight: 'normal',
-                letterSpacing: '0.42px',
+              letterSpacing: '0.42px',
+                mt: 5,
               }}>+38 (099) 123-45-67</Typography>
             </Box>
           </Toolbar>    
